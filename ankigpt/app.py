@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Form
 from fastapi.responses import FileResponse
 from .flashcards import generate_deck
 
@@ -9,8 +9,8 @@ app.get("/")(lambda: FileResponse("ankigpt/landing.html"))
 app.get("/landing_image.webp")(lambda: FileResponse("ankigpt/landing_image.webp"))
 
 
-@app.post("/")
-async def generate_flashcards(topic: str | None = None):
+@app.post("/generate")
+async def generate_flashcards(topic: str = Form(...)):
     if not topic:
         return {"error": "Topic is required"}
     return generate_deck(topic)
