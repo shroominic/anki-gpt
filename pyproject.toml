@@ -3,7 +3,7 @@ name = "anki-gpt"
 version = "0.0.1"
 description = "AI generated flashcards for Anki"
 authors = [{ name = "Shroominic", email = "contact@shroominic.com" }]
-dependencies = ["funcchain>=0.3.4", "fastapi>=0.111", "uvicorn>=0.30"]
+dependencies = ["funcchain>=0.3.5", "fastapi>=0.111", "uvicorn>=0.30"]
 readme = "README.md"
 requires-python = ">= 3.12"
 license = { text = "MIT" }

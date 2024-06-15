@@ -1,5 +1,7 @@
-from funcchain import chain
+from funcchain import chain, settings
 from pydantic import BaseModel
+
+settings.llm = "azure/gpt-4o"
 
 
 class Flashcard(BaseModel):
