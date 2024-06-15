@@ -1,0 +1,19 @@
+# python generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# rye
+.python-version
+*.lock
+
+# venv
+.venv
+
+# terraform
+.terraform
+.terraform.lock.hcl
+*.tfstate*
