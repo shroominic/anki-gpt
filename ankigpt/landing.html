@@ -29,10 +29,30 @@
             <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">Master Your Studies with AI-Powered Flashcards</h1>
                 <p class="mb-8 leading-relaxed">Harness the power of artificial intelligence to create personalized flashcards that make learning faster and more effective.</p>
-                <form action="/generate" method="post" class="flex justify-center">
-                    <input type="text" name="topic" placeholder="Enter topic for flashcards" class="text-gray-900 py-2 px-4 rounded-l-lg focus:outline-none">
-                    <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-r-lg text-lg">Generate Deck</button>
-                </form>
+                <div class="flex justify-center">
+                    <input type="text" id="topicInput" placeholder="Enter topic for flashcards" class="text-gray-900 py-2 px-4 rounded-l-lg focus:outline-none">
+                    <button id="generateButton" onclick="downloadDeck()" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-r-lg text-lg">Generate Deck</button>
+                </div>
+                <script>
+                    function downloadDeck() {
+                        const topic = document.getElementById('topicInput').value;
+                        const button = document.getElementById('generateButton');
+                        if (topic) {
+                            button.disabled = true;
+                            button.textContent = 'Generating...';
+                            const link = document.createElement('a');
+                            link.href = `/${encodeURIComponent(topic)}.csv`;
+                            link.download = `${topic}.csv`;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            button.disabled = false;
+                            button.textContent = 'Generate Deck';
+                        } else {
+                            alert('Please enter a topic.');
+                        }
+                    }
+                </script>
             </div>
         </div>
     </section>
