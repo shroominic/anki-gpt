@@ -16,7 +16,7 @@ resource "azurerm_service_plan" "plan" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                     = "steuerbobacr"
+  name                     = "ankigptacr"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   sku                      = "Basic"
@@ -24,7 +24,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_linux_web_app" "app" {
-  name                = "anki-gpt-app"
+  name                = "anki-gpt"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.plan.id
@@ -43,7 +43,7 @@ resource "azurerm_linux_web_app" "app" {
   app_settings = {
     "WEBSITES_PORT" = "8000"
     "DOCKER_ENABLE_CI" = "true"
-    "BASE_URL" = "https://anki-gpt-app.azurewebsites.net"
+    "BASE_URL" = "https://anki-gpt.azurewebsites.net"
   }
 }
 
