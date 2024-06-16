@@ -12,16 +12,17 @@ def fetch_wiki_page(topic: str) -> str:
         jina_link = "https://r.jina.ai/" + wiki_link
         response = requests.get(jina_link, timeout=30)
         return response.text
-    except:
+    except Exception as e:
+        print(e)
         return ""
 
 
 def duckduckgo_search(query: str) -> str:
     url = "https://api.duckduckgo.com/"
-    params = {
-        'q': "wikipedia " + query,
-        'format': 'json',
-        'pretty': 1
+    params: dict = {
+        "q": "wikipedia " + query,
+        "format": "json",
+        "pretty": 1,
     }
 
     response = requests.get(url, params=params)
